@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Movie Graph Insights</title>
+</head>
+<body>
+<h1>Welcome to Movie Graph Insights</h1>
+
+<h2>Explore the following analyses:</h2>
+
+<ul>
+  <li><a th:href="@{/actor-connections-ui(actorName='Tom Hanks')}">Actor Connections (e.g., Tom Hanks)</a></li>
+  <li><a th:href="@{/most-connected-actors-ui}">Most Connected Actors</a></li>
+  <li><a th:href="@{/relations-analysis-ui}">Relations Analysis</a></li>
+  <li><a th:href="@{/nodes-analysis-ui}">Nodes Analysis</a></li>
+  <li><a th:href="@{/complex-query-ui}">Complex Query Results</a></li>
+  <li><a th:href="@{/statistics-ui}">Tableau statistics</a></li>
+
+</ul>
+</body>
+</html>
