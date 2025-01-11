@@ -5,6 +5,9 @@
 </head>
 <body>
 <h2>Connections for Actor: <span th:text="${actorName}"></span></h2>
+<!-- Inclure la barre de navigation partagée -->
+<th:block th:replace="navbar.html"></th:block>
+
 <div>
   <p th:text="${connections}"></p>
 </div>

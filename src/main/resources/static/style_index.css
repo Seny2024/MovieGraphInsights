@@ -1,0 +1,143 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9; /* Fond doux et neutre */
+    color: #333; /* Texte sombre */
+    line-height: 1.6;
+    padding: 20px;
+    padding-left: 270px; /* Contenu décalé pour ne pas être masqué par le menu */
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #1a1a2e; /* Fond sombre pour le menu */
+    color: white;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Toujours au-dessus du contenu */
+}
+
+.navbar h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #ff6f61; /* Couleur d’accentuation */
+    text-align: center;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+.navbar ul li {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.navbar ul li a:hover {
+    background-color: #f59c81; /* Fond orange au survol */
+    color: white;
+    transform: translateY(-2px); /* Légère animation */
+}
+
+/* Content Section */
+.content {
+    margin-left: 270px; /* Aligne le contenu après la barre de navigation */
+    padding: 20px;
+    transition: margin-left 0.3s; /* Animation lors du changement de taille de la navbar */
+}
+
+.content h2 {
+    font-size: 24px;
+    color: #1a1a2e; /* Titre avec contraste */
+    margin-bottom: 20px;
+}
+
+/* Conteneur pour les boutons */
+.button-container {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px; /* Espace entre les boutons */
+}
+
+.nav-button {
+    background-color: transparent; /* Fond transparent */
+    border: 1px solid #0bd0ac; /* Bordure assortie */
+    color: #0bd0ac; /* Texte assorti à la bordure */
+    padding: 10px 20px; /* Espacement uniforme */
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: capitalize; /* Texte en minuscules avec première lettre en majuscule */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointeur pour indiquer la cliquabilité */
+    transition: all 0.3s ease; /* Transition douce pour les changements visuels */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère pour un effet de relief */
+    width: 95%; /* Taille uniforme des boutons */
+    height: 60px; /* Taille uniforme des boutons */
+    text-align: center; /* Centrer le texte */
+}
+
+.nav-button:hover {
+    background-color: #0056b3; /* Fond bleu foncé au survol */
+    color: #ffffff; /* Texte blanc au survol */
+    border-color: #0056b3;
+    transform: scale(1.05); /* Effet de zoom */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        box-shadow: none; /* Supprime l'ombre pour un design plus épuré sur mobile */
+    }
+
+    .navbar ul li a {
+        font-size: 16px; /* Texte légèrement plus petit */
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 15px; /* Espace vertical entre les boutons */
+    }
+
+    .nav-button {
+        width: 100%; /* Les boutons prennent toute la largeur */
+        margin: 0 auto;
+    }
+}

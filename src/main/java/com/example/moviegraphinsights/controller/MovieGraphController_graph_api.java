@@ -85,7 +85,7 @@ public class MovieGraphController_graph_api {
             }
         }
 
-        /* / Log des données pour vérification
+        // Log des données pour vérification
         System.out.println("Actor Names: " + actorNames);
         System.out.println("Actor Connections: " + actorConnections);
         System.out.println("Node Names: " + nodeNames);
@@ -99,7 +99,7 @@ public class MovieGraphController_graph_api {
         model.addAttribute("nodeNames", nodeNames);
         model.addAttribute("nodeCounts", nodeCounts);
         model.addAttribute("relationNames", relationNames);
-        model.addAttribute("relationCounts", relationCounts); */
+        model.addAttribute("relationCounts", relationCounts);
 
         return "statistics"; // Nom du fichier Thymeleaf
     }

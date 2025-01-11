@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Graph Insights</title>
+  <link rel="stylesheet" href="style_index.css">
+</head>
+<body>
+<div class="navbar">
+  <h1>Analyse de la DB Neo4j de films</h1>
+  <div class="button-container">
+    <button onclick="location.href='/actor-connections-ui?actorName=Tom+Hanks'" class="nav-button">
+      Connexions d'acteurs (ex. Tom Hanks)
+    </button>
+    <button onclick="location.href='/most-connected-actors-ui'" class="nav-button">
+      Acteurs les plus connectés
+    </button>
+    <button onclick="location.href='/relations-analysis-ui'" class="nav-button">
+      Analyse des relations
+    </button>
+    <button onclick="location.href='/nodes-analysis-ui'" class="nav-button">
+      Analyse des nœuds
+    </button>
+    <button onclick="location.href='/complex-query-ui'" class="nav-button">
+      Résultats des requêtes complexes
+    </button>
+    <button onclick="location.href='/statistics-ui'" class="nav-button">
+      Statistiques Tableau
+    </button>
+  </div>
+</div>
+
+</body>
+</html>
