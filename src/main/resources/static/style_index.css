@@ -68,13 +68,13 @@ body {
 
 /* Content Section */
 .content {
-    margin-left: 270px; /* Aligne le contenu après la barre de navigation */
+    margin-left: 50px; /* Aligne le contenu après la barre de navigation */
     padding: 20px;
     transition: margin-left 0.3s; /* Animation lors du changement de taille de la navbar */
 }
 
 .content h2 {
-    font-size: 24px;
+    font-size: 45px;
     color: #1a1a2e; /* Titre avec contraste */
     margin-bottom: 20px;
 }

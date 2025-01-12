@@ -12,7 +12,7 @@ public class Neo4jConfig {
 
     @Bean
     public Driver driver() {
-        return GraphDatabase.driver("bolt://3.83.163.178:7687",
-                AuthTokens.basic("neo4j", "handler-sill-generator"));
+        return GraphDatabase.driver("bolt://18.207.138.44",
+                AuthTokens.basic("neo4j", "boot-investigation-completion"));
     }
 }
