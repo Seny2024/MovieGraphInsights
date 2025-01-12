@@ -37,7 +37,7 @@ MovieGraphInsights est une application interactive qui vous permet d'explorer le
 - **API** : Une série d'API RESTful développées pour interagir avec la base de données et effectuer des analyses.
 
 ### Frontend
-- **Technologie** : React.js pour une interface utilisateur interactive et moderne.
+- **Technologie** : thymeleaf pour une interface utilisateur interactive et moderne.
 - **API Consommées** :
   - `GET /relations/analysis` : Analyse les types de relations.
   - `GET /nodes/analysis` : Analyse les types de nœuds dans la base de données.
