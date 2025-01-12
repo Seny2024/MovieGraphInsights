@@ -2,100 +2,109 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Statistiques du Movie Graph</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style_statistics.css">
 </head>
 <body>
-<!-- Inclure la barre de navigation partagée -->
+<!-- Barre de navigation incluse -->
 <th:block th:replace="navbar.html"></th:block>
 
-<h1>Statistiques du Movie Graph</h1>
+<!-- Contenu principal -->
+<main class="container">
+  <header>
+    <h1 class="title">Statistiques du Movie Graph</h1>
+  </header>
 
-<!-- Graphique des acteurs les plus connectés -->
-<section>
-  <h2>Acteurs les Plus Connectés</h2>
-  <canvas id="actorsGraph"></canvas>
-  <script th:inline="javascript">
-    var ctx = document.getElementById('actorsGraph').getContext('2d');
-    var actorNames = /*[[${actorNames}]]*/ [];
-    var actorConnections = /*[[${actorConnections}]]*/ [];
-    var actorChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: actorNames,
-        datasets: [{
-          label: 'Nombre de Connexions',
-          data: actorConnections,
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-          borderColor: 'rgba(54, 162, 235, 1)',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+  <!-- Section : Graphique des acteurs les plus connectés -->
+  <section class="chart-section">
+    <h2 class="section-title">Acteurs les Plus Connectés</h2>
+    <canvas id="actorsGraph"></canvas>
+  </section>
+
+  <!-- Section : Analyse des Nœuds -->
+  <section class="chart-section">
+    <h2 class="section-title">Analyse des Nœuds</h2>
+    <canvas id="nodesGraph"></canvas>
+  </section>
+
+  <!-- Section : Analyse des Relations -->
+  <section class="chart-section">
+    <h2 class="section-title">Analyse des Relations</h2>
+    <canvas id="relationsGraph"></canvas>
+  </section>
+</main>
+
+<!-- Scripts Chart.js -->
+<script th:inline="javascript">
+  // Acteurs les plus connectés
+  var ctx = document.getElementById('actorsGraph').getContext('2d');
+  var actorNames = /*[[${actorNames}]]*/ [];
+  var actorConnections = /*[[${actorConnections}]]*/ [];
+  var actorChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: actorNames,
+      datasets: [{
+        label: 'Nombre de Connexions',
+        data: actorConnections,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
         }
       }
-    });
-  </script>
-</section>
+    }
+  });
 
-<!-- Graphique des nœuds -->
-<section>
-  <h2>Analyse des Nœuds</h2>
-  <canvas id="nodesGraph"></canvas>
-  <script th:inline="javascript">
-    var ctx2 = document.getElementById('nodesGraph').getContext('2d');
-    var nodeNames = /*[[${nodeNames}]]*/ [];
-    var nodeCounts = /*[[${nodeCounts}]]*/ [];
-    var nodeChart = new Chart(ctx2, {
-      type: 'pie',
-      data: {
-        labels: nodeNames,
-        datasets: [{
-          label: 'Nombre de Nœuds',
-          data: nodeCounts,
-          backgroundColor: ['#FF6347', '#4CAF50'],
-          borderColor: ['#FF6347', '#4CAF50'],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true
-      }
-    });
-  </script>
-</section>
+  // Analyse des nœuds
+  var ctx2 = document.getElementById('nodesGraph').getContext('2d');
+  var nodeNames = /*[[${nodeNames}]]*/ [];
+  var nodeCounts = /*[[${nodeCounts}]]*/ [];
+  var nodeChart = new Chart(ctx2, {
+    type: 'pie',
+    data: {
+      labels: nodeNames,
+      datasets: [{
+        label: 'Nombre de Nœuds',
+        data: nodeCounts,
+        backgroundColor: ['#FF6347', '#4CAF50', '#2196F3', '#FFEB3B'],
+        borderColor: ['#FF6347', '#4CAF50', '#2196F3', '#FFEB3B'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
 
-<!-- Graphique des relations -->
-<section>
-  <h2>Analyse des Relations</h2>
-  <canvas id="relationsGraph"></canvas>
-  <script th:inline="javascript">
-    var ctx3 = document.getElementById('relationsGraph').getContext('2d');
-    var relationNames = /*[[${relationNames}]]*/ [];
-    var relationCounts = /*[[${relationCounts}]]*/ [];
-    var relationChart = new Chart(ctx3, {
-      type: 'bar',
-      data: {
-        labels: relationNames,
-        datasets: [{
-          label: 'Nombre de Relations',
-          data: relationCounts,
-          backgroundColor: '#FFEB3B',
-          borderColor: '#FFEB3B',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true
-      }
-    });
-  </script>
-</section>
-
+  // Analyse des relations
+  var ctx3 = document.getElementById('relationsGraph').getContext('2d');
+  var relationNames = /*[[${relationNames}]]*/ [];
+  var relationCounts = /*[[${relationCounts}]]*/ [];
+  var relationChart = new Chart(ctx3, {
+    type: 'bar',
+    data: {
+      labels: relationNames,
+      datasets: [{
+        label: 'Nombre de Relations',
+        data: relationCounts,
+        backgroundColor: '#FFEB3B',
+        borderColor: '#FFEB3B',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+</script>
 </body>
 </html>

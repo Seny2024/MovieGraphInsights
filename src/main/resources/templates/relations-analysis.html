@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Relations Analysis</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analyse des Relations</title>
+  <link rel="stylesheet" href="style_relations.css">
 </head>
 <body>
 <!-- Inclure la barre de navigation partagée -->
 <th:block th:replace="navbar.html"></th:block>
 
-<h2>Relations Analysis</h2>
-<pre th:text="${relations}"></pre>
+<!-- Contenu principal -->
+<main class="container">
+  <header>
+    <h1 class="title">Nombre total de film par type de relation</h1>
+  </header>
+
+  <!-- Résultats de l'analyse des relations -->
+  <section class="query-result-section">
+    <h2 class="section-title">Résultats</h2>
+    <table class="query-result-table">
+      <thead>
+      <tr>
+        <th>Relation</th>
+        <th>Nombre</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="result : ${relationsResults}">
+        <td th:text="${result['Relation']}">Relation</td>
+        <td th:text="${result['Count']}">Nombre</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
 </body>
 </html>

@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Nodes Analysis</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analyse des Nœuds</title>
+  <link rel="stylesheet" href="style_nodes.css">
 </head>
 <body>
 <!-- Inclure la barre de navigation partagée -->
 <th:block th:replace="navbar.html"></th:block>
 
-<h2>Nodes Analysis</h2>
-<pre th:text="${nodes}"></pre>
+<!-- Contenu principal -->
+<main class="container">
+  <header>
+    <h1 class="title">Nombre total de films et acteurs</h1>
+  </header>
+
+  <!-- Résultats de l'analyse des nœuds -->
+  <section class="query-result-section">
+    <h2 class="section-title">Résultats</h2>
+    <table class="query-result-table">
+      <thead>
+      <tr>
+        <th>Acteur/Films</th>
+        <th>Nombre</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="result : ${nodesResults}">
+        <td th:text="${result['Node']}">Acteur/Films</td>
+        <td th:text="${result['Count']}">Nombre</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
 </body>
 </html>

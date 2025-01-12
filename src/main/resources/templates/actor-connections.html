@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Actor Connections</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexions de l'Acteur</title>
+  <link rel="stylesheet" href="style_actorConnection.css">
 </head>
 <body>
-<h2>Connections for Actor: <span th:text="${actorName}"></span></h2>
 <!-- Inclure la barre de navigation partagée -->
 <th:block th:replace="navbar.html"></th:block>
 
-<div>
-  <p th:text="${connections}"></p>
-</div>
+<main class="container">
+
+  <!-- Formulaire de recherche de l'acteur -->
+  <section class="search-section">
+    <form method="get" action="/actor-connections-ui" class="search-form">
+      <label for="actorName">Entrez le nom de l'acteur :</label>
+      <input type="text" id="actorName" name="actorName" required placeholder="Nom de l'acteur">
+      <button type="submit">Rechercher</button>
+    </form>
+  </section>
+
+  <header>
+    <h1 class="title">Films et rôles de : <span th:text="${actorName}"> </span> </h1>
+  </header>
+
+  <!-- Résultats des connexions de l'acteur -->
+  <section class="query-result-section">
+    <h2 class="section-title">Résultats</h2>
+    <table class="query-result-table">
+      <thead>
+      <tr>
+        <th>Film</th>
+        <th>Rôle</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="result : ${connectionsResults}">
+        <td th:text="${result['Movie']}">Movie</td>
+        <td th:text="${result['Role']}">Role</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
 </body>
 </html>

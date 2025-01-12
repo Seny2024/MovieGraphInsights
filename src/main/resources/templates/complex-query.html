@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Complex Query Results</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résultats des Requêtes Complexes</title>
+  <link rel="stylesheet" href="style_complex.css">
 </head>
 <body>
-<h2>Complex Query Results</h2>
-<!-- Inclure la barre de navigation partagée -->
+<!-- Barre de navigation incluse -->
 <th:block th:replace="navbar.html"></th:block>
 
-<pre th:text="${queryResult}"></pre>
+<!-- Contenu principal -->
+<main class="container">
+
+  <!-- Résultats de la requête -->
+  <section class="query-result-section">
+    <h2 class="section-title">Résultats</h2>
+    <table class="query-result-table">
+      <thead>
+      <tr>
+        <th>Personne</th>
+        <th>Film</th>
+        <th>Type de Rôle</th>
+        <th>Année de Naissance</th>
+        <th>Année de Sortie</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="result : ${queryResults}">
+        <td th:text="${result['Person']}">Personne</td>
+        <td th:text="${result['Movie']}">Film</td>
+        <td th:text="${result['Role']}">Rôle</td>
+        <td th:text="${result['Birth Year']}">Année de Naissance</td>
+        <td th:text="${result['Release Year']}">Année de Sortie</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
 </body>
 </html>

@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Most Connected Actors</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombre total de film par acteur</title>
+    <link rel="stylesheet" href="style_mostConnected.css">
 </head>
 <body>
-<h2>Most Connected Actors:</h2>
 <!-- Inclure la barre de navigation partagée -->
 <th:block th:replace="navbar.html"></th:block>
 
-<pre th:text="${actors}"></pre>
+<main class="container">
+    <header>
+        <h1 class="title">Acteurs ayant jouer dans plus de films </h1>
+    </header>
+
+    <!-- Résultats des acteurs les plus connectés -->
+    <section class="query-result-section">
+        <h2 class="section-title">Résultats</h2>
+        <table class="query-result-table">
+            <thead>
+            <tr>
+                <th>Acteur</th>
+                <th>Film</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="result : ${actorsResults}">
+                <td th:text="${result['Actor']}">Acteur</td>
+                <td th:text="${result['Connections']}">Connexions</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
 </body>
 </html>
