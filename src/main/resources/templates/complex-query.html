@@ -13,10 +13,19 @@
 <!-- Contenu principal -->
 <main class="container">
 
+  <!-- Formulaire de recherche -->
+  <section class="search-section">
+    <form method="get" action="/complex-query-ui" class="search-form">
+      <label for="searchTerm">Entrer nom acteur ou année de sortie du film :</label>
+      <input type="text" id="searchTerm" name="searchTerm" value="" placeholder="Search...">
+      <button type="submit">Chercher</button>
+    </form>
+  </section>
+
   <!-- Résultats de la requête -->
   <section class="query-result-section">
     <h2 class="section-title">Résultats</h2>
-    <table class="query-result-table">
+    <table class="query-result-table" th:if="${not #lists.isEmpty(queryResults)}">
       <thead>
       <tr>
         <th>Personne</th>
@@ -36,6 +45,7 @@
       </tr>
       </tbody>
     </table>
+    <p th:if="${#lists.isEmpty(queryResults)}">No results found.</p>
   </section>
 </main>
 </body>

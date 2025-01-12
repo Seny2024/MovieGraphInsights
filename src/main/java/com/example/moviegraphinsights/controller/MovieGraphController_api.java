@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class MovieGraphController_api {
@@ -157,7 +158,7 @@ public class MovieGraphController_api {
 
 
     @GetMapping("/complex-query-ui")
-    public String showComplexQueryResults(Model model) {
+    public String showComplexQueryResults(@RequestParam(name = "searchTerm", required = false, defaultValue = "") String searchTerm, Model model) {
         // Construire l'URL pour la requête complexe
         String queryUrl = "http://localhost:8080/complex-query";
 
@@ -173,14 +174,22 @@ public class MovieGraphController_api {
             for (String line : queryLines) {
                 Map<String, String> result = new HashMap<>();
                 String[] parts = line.split(", ");
-                for (String part : parts) {
-                    String[] keyValue = part.split(": ");
-                    if (keyValue.length == 2) {
-                        result.put(keyValue[0].trim(), keyValue[1].trim());
-                    }
+                if (parts.length == 5) {
+                    result.put("Person", parts[0].replace("Person: ", "").trim());
+                    result.put("Movie", parts[1].replace("Movie: ", "").trim());
+                    result.put("Role", parts[2].replace("Role: ", "").trim());
+                    result.put("Birth Year", parts[3].replace("Birth Year: ", "").trim());
+                    result.put("Release Year", parts[4].replace("Release Year: ", "").trim());
                 }
                 queryResults.add(result);
             }
+        }
+
+        // Filtrer les résultats en fonction du terme de recherche
+        if (!searchTerm.isEmpty()) {
+            queryResults = queryResults.stream()
+                    .filter(result -> result.get("Person").contains(searchTerm) || result.get("Release Year").contains(searchTerm))
+                    .collect(Collectors.toList());
         }
 
         // Log des données pour vérification
@@ -188,6 +197,7 @@ public class MovieGraphController_api {
 
         // Ajouter les données au modèle pour Thymeleaf
         model.addAttribute("queryResults", queryResults);
+        model.addAttribute("searchTerm", searchTerm);
 
         return "complex-query"; // Nom du fichier Thymeleaf
     }
